@@ -1,0 +1,204 @@
+<section class="hero" id="inicio">
+	<div class="hero__background">
+		<div class="hero__orb hero__orb--blue"></div>
+		<div class="hero__orb hero__orb--violet"></div>
+		<div class="hero__grid"></div>
+	</div>
+	<div class="hero__inner">
+		<div class="hero__content">
+			<p class="hero__eyebrow">Desarrollo web · Duarte.Dev</p>
+			<h1 class="hero__title">Desarrollo webs que ayudan a tu negocio a estar online.</h1>
+			<p class="hero__subtitle">
+				Diseño y desarrollo sitios web modernos para negocios, proyectos y emprendimientos.
+			</p>
+			<div class="hero__actions">
+				<a class="hero__button hero__button--primary" href="#contacto">Hablemos de tu proyecto</a>
+				<a class="hero__button hero__button--ghost" href="#proyectos">Ver proyectos</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		display: flex;
+		align-items: center;
+		min-height: 100svh;
+		padding: 7rem 1.5rem 4rem;
+		overflow: hidden;
+	}
+
+	.hero__background {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+
+	.hero__orb {
+		position: absolute;
+		width: 280px;
+		height: 280px;
+		border-radius: 50%;
+		filter: blur(120px);
+		opacity: 0.25;
+	}
+
+	.hero__orb--blue {
+		top: 18%;
+		left: -10%;
+		background: radial-gradient(circle, rgba(37, 99, 235, 0.9) 0%, transparent 70%);
+	}
+
+	.hero__orb--violet {
+		bottom: -12%;
+		right: -8%;
+		background: radial-gradient(circle, rgba(124, 58, 237, 0.9) 0%, transparent 70%);
+	}
+
+	.hero__grid {
+		position: absolute;
+		inset: 0;
+		background-image: radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+		background-size: 120px 120px;
+		opacity: 0.08;
+		mask-image: radial-gradient(circle at top, black, transparent 70%);
+	}
+
+	.hero__inner {
+		position: relative;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		gap: 1.5rem;
+	}
+
+	.hero__content {
+		grid-column: 1 / span 8;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		animation: hero-fade 0.8s ease both;
+	}
+
+	.hero__eyebrow {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.4rem 0.9rem;
+		border-radius: 999px;
+		border: 1px solid rgba(148, 163, 184, 0.4);
+		color: var(--text-secondary);
+		font-size: 0.9rem;
+		width: fit-content;
+		text-transform: uppercase;
+		letter-spacing: 0.18em;
+		font-weight: 500;
+	}
+
+	.hero__title {
+		margin: 0;
+		font-size: clamp(2.4rem, 5vw, 4.2rem);
+		line-height: 1.08;
+		letter-spacing: -0.03em;
+		font-weight: 600;
+	}
+
+	.hero__subtitle {
+		margin: 0;
+		max-width: 640px;
+		color: var(--text-secondary);
+		font-size: clamp(1.05rem, 2vw, 1.25rem);
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.9rem;
+		margin-top: 0.5rem;
+	}
+
+	.hero__button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.75rem 1.8rem;
+		border-radius: 999px;
+		font-weight: 500;
+		font-size: 0.98rem;
+		transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+		border: 1px solid transparent;
+	}
+
+	.hero__button--primary {
+		background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-violet) 100%);
+		color: var(--text-primary);
+	}
+
+	.hero__button--primary:hover,
+	.hero__button--primary:focus-visible {
+		transform: translateY(-1px);
+		box-shadow: 0 20px 60px -30px rgba(37, 99, 235, 0.9);
+	}
+
+	.hero__button--ghost {
+		background: transparent;
+		color: var(--text-primary);
+		border-color: rgba(148, 163, 184, 0.6);
+	}
+
+	.hero__button--ghost:hover,
+	.hero__button--ghost:focus-visible {
+		transform: translateY(-1px);
+		border-color: rgba(139, 92, 246, 0.9);
+	}
+
+	.hero__button:active {
+		transform: translateY(0);
+	}
+
+	@keyframes hero-fade {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 1080px) {
+		.hero__content {
+			grid-column: 1 / span 10;
+		}
+	}
+
+	@media (max-width: 860px) {
+		.hero {
+			padding-top: 6.5rem;
+		}
+
+		.hero__content {
+			grid-column: 1 / -1;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.hero {
+			padding: 6.2rem 1.25rem 3.5rem;
+		}
+
+		.hero__actions {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.hero__button {
+			width: 100%;
+			max-width: 320px;
+		}
+	}
+</style>

@@ -1,11 +1,18 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<Navbar />
+	<main>
+		<Hero />
+		<section id="servicios" aria-label="Servicios" style="min-height: 60vh;"></section>
+		<section id="proyectos" aria-label="Proyectos" style="min-height: 60vh;"></section>
+		<section id="como-trabajo" aria-label="Cómo trabajo" style="min-height: 60vh;"></section>
+		<section id="sobre-mi" aria-label="Sobre mí" style="min-height: 60vh;"></section>
+		<section id="contacto" aria-label="Contacto" style="min-height: 60vh;"></section>
+	</main>
 </Layout>
+
