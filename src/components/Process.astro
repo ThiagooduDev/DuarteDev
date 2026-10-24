@@ -1,0 +1,278 @@
+<section class="process" id="como-trabajo" aria-labelledby="process-title">
+	<div class="process__inner">
+		<header class="process__header">
+			<div class="process__header-top">
+				<p class="process__eyebrow">CÓMO TRABAJO</p>
+				<span class="process__count" aria-hidden="true">01 — 06</span>
+			</div>
+			<h2 class="process__title" id="process-title">De una idea a una web lista para usar.</h2>
+			<p class="process__intro">
+				Un proceso simple para entender qué necesitás, desarrollar la solución y dejar todo listo para publicar.
+			</p>
+		</header>
+
+		<div class="process__track">
+			<div class="process__track-line" aria-hidden="true"></div>
+			<ol class="process__list">
+				<li class="process__step">
+					<span class="process__node" aria-hidden="true">01</span>
+					<div class="process__content">
+						<h3 class="process__step-title">Contacto</h3>
+						<p class="process__step-text">
+							Me contás sobre tu negocio, proyecto o idea y qué necesitás resolver con la web.
+						</p>
+					</div>
+				</li>
+				<li class="process__step">
+					<span class="process__node" aria-hidden="true">02</span>
+					<div class="process__content">
+						<h3 class="process__step-title">Cotización</h3>
+						<p class="process__step-text">Definimos qué va a incluir el proyecto y preparo una propuesta acorde a lo que necesitás.</p>
+					</div>
+				</li>
+				<li class="process__step">
+					<span class="process__node" aria-hidden="true">03</span>
+					<div class="process__content">
+						<h3 class="process__step-title">Diseño</h3>
+						<p class="process__step-text">Organizo el contenido y preparo la dirección visual de la web teniendo en cuenta la identidad del negocio.</p>
+					</div>
+				</li>
+				<li class="process__step">
+					<span class="process__node" aria-hidden="true">04</span>
+					<div class="process__content">
+						<h3 class="process__step-title">Desarrollo</h3>
+						<p class="process__step-text">Construyo la web y sus funcionalidades, adaptándola para celular, tablet y computadora.</p>
+					</div>
+				</li>
+				<li class="process__step">
+					<span class="process__node" aria-hidden="true">05</span>
+					<div class="process__content">
+						<h3 class="process__step-title">Revisión</h3>
+						<p class="process__step-text">Revisamos el resultado y realizamos los ajustes necesarios antes de publicar.</p>
+					</div>
+				</li>
+				<li class="process__step">
+					<span class="process__node" aria-hidden="true">06</span>
+					<div class="process__content">
+						<h3 class="process__step-title">Publicación</h3>
+						<p class="process__step-text">Dejo la web online y lista para que puedas compartirla con tus clientes.</p>
+					</div>
+				</li>
+			</ol>
+		</div>
+	</div>
+</section>
+
+<style>
+	.process {
+		position: relative;
+		padding: 7rem 1.5rem 6rem;
+	}
+
+	.process__inner {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	.process__header {
+		display: flex;
+		flex-direction: column;
+		gap: 1.1rem;
+		max-width: 780px;
+		animation: process-fade 0.7s ease both;
+	}
+
+	.process__header-top {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+	}
+
+	.process__eyebrow {
+		margin: 0;
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		letter-spacing: 0.28em;
+		font-size: 0.85rem;
+		font-weight: 500;
+	}
+
+	.process__count {
+		color: var(--text-secondary);
+		font-size: 0.8rem;
+		letter-spacing: 0.12em;
+		opacity: 0.75;
+		padding-left: 1.25rem;
+		border-left: 1px solid var(--border-color);
+		font-variant-numeric: tabular-nums;
+	}
+
+	.process__title {
+		margin: 0;
+		font-size: clamp(2.1rem, 4.2vw, 3.6rem);
+		line-height: 1.08;
+		letter-spacing: -0.025em;
+		font-weight: 600;
+	}
+
+	.process__intro {
+		margin: 0;
+		color: var(--text-secondary);
+		font-size: clamp(1rem, 2vw, 1.15rem);
+		max-width: 660px;
+	}
+
+	.process__track {
+		position: relative;
+		animation: process-fade 0.7s ease 0.1s both;
+	}
+
+	.process__track-line {
+		position: absolute;
+		top: 1.6rem;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(90deg, transparent 0%, var(--border-color) 10%, var(--border-color) 90%, transparent 100%);
+		pointer-events: none;
+	}
+
+	.process__list {
+		display: grid;
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		gap: 1.5rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: relative;
+	}
+
+	.process__step {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		position: relative;
+	}
+
+	.process__node {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3.2rem;
+		height: 3.2rem;
+		border-radius: 50%;
+		border: 1px solid var(--border-color);
+		background: radial-gradient(circle, rgba(124, 58, 237, 0.16) 0%, transparent 70%);
+		color: var(--text-primary);
+		font-variant-numeric: tabular-nums;
+		letter-spacing: 0.08em;
+		font-size: 0.9rem;
+		position: relative;
+		z-index: 1;
+		transition: border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+	}
+
+	.process__step:hover .process__node {
+		border-color: rgba(139, 92, 246, 0.8);
+		color: var(--accent-violet-light);
+		box-shadow: 0 0 0 6px rgba(124, 58, 237, 0.08);
+	}
+
+	.process__content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		max-width: 18ch;
+	}
+
+	.process__step-title {
+		margin: 0;
+		font-size: 1.25rem;
+		font-weight: 500;
+		letter-spacing: -0.01em;
+		transition: color 0.25s ease;
+	}
+
+	.process__step:hover .process__step-title {
+		color: var(--text-primary);
+	}
+
+	.process__step-text {
+		margin: 0;
+		color: var(--text-secondary);
+		font-size: 0.95rem;
+		line-height: 1.7;
+	}
+
+	@keyframes process-fade {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 1100px) {
+		.process__list {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			row-gap: 2.5rem;
+		}
+
+		.process__track-line {
+			top: 1.6rem;
+			height: 1px;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.process {
+			padding: 5rem 1.25rem 4rem;
+		}
+
+		.process__inner {
+			gap: 2.5rem;
+		}
+
+		.process__track-line {
+			display: none;
+		}
+
+		.process__list {
+			grid-template-columns: 1fr;
+			gap: 0;
+		}
+
+		.process__step {
+			flex-direction: row;
+			align-items: flex-start;
+			gap: 1rem;
+			padding: 1.4rem 0;
+			border-bottom: 1px solid var(--border-color);
+		}
+
+		.process__step:first-child {
+			padding-top: 0;
+		}
+
+		.process__step:last-child {
+			border-bottom: none;
+			padding-bottom: 0;
+		}
+
+		.process__node {
+			width: 2.8rem;
+			height: 2.8rem;
+			flex-shrink: 0;
+		}
+
+		.process__content {
+			max-width: none;
+		}
+	}
+</style>
