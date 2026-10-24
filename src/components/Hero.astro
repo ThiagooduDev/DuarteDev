@@ -16,6 +16,18 @@
 				<a class="hero__button hero__button--ghost" href="#proyectos">Ver proyectos</a>
 			</div>
 		</div>
+		<div class="hero__visual">
+			<div class="hero__visual-glow" aria-hidden="true"></div>
+			<img
+				class="hero__logo"
+				src="/images/duartedev-logo-completo.png"
+				alt="Duarte.Dev"
+				width="863"
+				height="584"
+				loading="eager"
+				decoding="async"
+			/>
+		</div>
 	</div>
 </section>
 
@@ -72,15 +84,47 @@
 		margin: 0 auto;
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
+		align-items: center;
 		gap: 1.5rem;
 	}
 
 	.hero__content {
-		grid-column: 1 / span 8;
+		grid-column: 1 / span 7;
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
 		animation: hero-fade 0.8s ease both;
+	}
+
+	.hero__visual {
+		position: relative;
+		grid-column: 8 / span 5;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		animation: hero-fade 0.9s ease 0.15s both;
+	}
+
+	.hero__visual-glow {
+		position: absolute;
+		inset: 8%;
+		background: radial-gradient(
+			ellipse at center,
+			rgba(37, 99, 235, 0.22) 0%,
+			rgba(124, 58, 237, 0.16) 42%,
+			transparent 72%
+		);
+		filter: blur(48px);
+		opacity: 0.8;
+		pointer-events: none;
+	}
+
+	.hero__logo {
+		position: relative;
+		width: 100%;
+		max-width: 420px;
+		height: auto;
+		object-fit: contain;
 	}
 
 	.hero__eyebrow {
@@ -172,7 +216,11 @@
 
 	@media (max-width: 1080px) {
 		.hero__content {
-			grid-column: 1 / span 10;
+			grid-column: 1 / span 6;
+		}
+
+		.hero__visual {
+			grid-column: 7 / span 6;
 		}
 	}
 
@@ -183,6 +231,15 @@
 
 		.hero__content {
 			grid-column: 1 / -1;
+		}
+
+		.hero__visual {
+			grid-column: 1 / -1;
+			margin-top: 2rem;
+		}
+
+		.hero__logo {
+			max-width: 300px;
 		}
 	}
 
@@ -199,6 +256,14 @@
 		.hero__button {
 			width: 100%;
 			max-width: 320px;
+		}
+
+		.hero__visual {
+			margin-top: 1.5rem;
+		}
+
+		.hero__logo {
+			max-width: 240px;
 		}
 	}
 </style>
