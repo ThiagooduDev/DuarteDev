@@ -1,0 +1,233 @@
+<footer class="footer" aria-labelledby="footer-title">
+	<div class="footer__inner">
+		<div class="footer__main">
+			<div class="footer__brand">
+				<div class="footer__brand-header">
+					<img
+						class="footer__brand-icon"
+						src="/images/duartedev-icono.png"
+						alt=""
+						width="40"
+						height="40"
+						loading="lazy"
+						decoding="async"
+					/>
+					<div class="footer__brand-text">
+						<span class="footer__brand-name">Duarte.Dev</span>
+						<span class="footer__brand-meta">Desarrollo web · Uruguay</span>
+					</div>
+				</div>
+				<p class="footer__brand-tagline">Desarrollo web para negocios reales.</p>
+			</div>
+
+			<div class="footer__nav">
+				<p class="footer__section-title">NAVEGACIÓN</p>
+				<ul class="footer__nav-list">
+					<li class="footer__nav-item">
+						<a class="footer__link" href="#inicio">Inicio</a>
+					</li>
+					<li class="footer__nav-item">
+						<a class="footer__link" href="#servicios">Servicios</a>
+					</li>
+					<li class="footer__nav-item">
+						<a class="footer__link" href="#proyectos">Proyectos</a>
+					</li>
+					<li class="footer__nav-item">
+						<a class="footer__link" href="#como-trabajo">Cómo trabajo</a>
+					</li>
+					<li class="footer__nav-item">
+						<a class="footer__link" href="#sobre-mi">Sobre mí</a>
+					</li>
+					<li class="footer__nav-item">
+						<a class="footer__link" href="#contacto">Contacto</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="footer__contact">
+				<p class="footer__section-title">CONTACTO</p>
+				<ul class="footer__contact-list">
+					<li class="footer__contact-item">
+						<span class="footer__contact-label">WhatsApp</span>
+						<a class="footer__link" href="https://wa.me/59896101515" target="_blank" rel="noopener noreferrer">096 101 515</a>
+					</li>
+					<li class="footer__contact-item">
+						<span class="footer__contact-label">Instagram</span>
+						<a class="footer__link" href="https://instagram.com/Duartee.tt" target="_blank" rel="noopener noreferrer">Duartee.tt</a>
+					</li>
+					<li class="footer__contact-item">
+						<span class="footer__contact-label">Email</span>
+						<a class="footer__link" href="mailto:duartedevv@gmail.com">duartedevv@gmail.com</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="footer__bottom">
+			<p class="footer__copyright">© 2026 Duarte.Dev. Todos los derechos reservados.</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		position: relative;
+		padding: 4rem 1.5rem 2rem;
+		border-top: 1px solid var(--border-color);
+	}
+
+	.footer__inner {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+	}
+
+	.footer__main {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		gap: clamp(2rem, 6vw, 4rem);
+		align-items: start;
+	}
+
+	.footer__brand {
+		grid-column: 1 / span 4;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.footer__brand-header {
+		display: flex;
+		align-items: center;
+		gap: 0.9rem;
+	}
+
+	.footer__brand-icon {
+		width: 40px;
+		height: 40px;
+		object-fit: contain;
+	}
+
+	.footer__brand-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+	}
+
+	.footer__brand-name {
+		font-weight: 500;
+		letter-spacing: -0.01em;
+	}
+
+	.footer__brand-meta {
+		color: var(--text-secondary);
+		font-size: 0.88rem;
+		text-transform: uppercase;
+		letter-spacing: 0.16em;
+	}
+
+	.footer__brand-tagline {
+		margin: 0;
+		color: var(--text-secondary);
+		max-width: 28ch;
+	}
+
+	.footer__nav {
+		grid-column: 6 / span 3;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.footer__contact {
+		grid-column: 10 / span 3;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.footer__section-title {
+		margin: 0;
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		letter-spacing: 0.22em;
+		font-size: 0.8rem;
+	}
+
+	.footer__nav-list,
+	.footer__contact-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+
+	.footer__nav-item,
+	.footer__contact-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+	}
+
+	.footer__contact-label {
+		color: var(--text-secondary);
+		font-size: 0.88rem;
+	}
+
+	.footer__link {
+		color: var(--text-primary);
+		text-decoration: none;
+		width: fit-content;
+		transition: color 0.2s ease;
+	}
+
+	.footer__link:hover,
+	.footer__link:focus-visible {
+		color: var(--accent-violet-light);
+	}
+
+	.footer__bottom {
+		padding-top: 1.8rem;
+		border-top: 1px solid var(--border-color);
+	}
+
+	.footer__copyright {
+		margin: 0;
+		color: var(--text-secondary);
+		font-size: 0.9rem;
+	}
+
+	@media (max-width: 980px) {
+		.footer__brand {
+			grid-column: 1 / span 6;
+		}
+
+		.footer__nav {
+			grid-column: 7 / span 6;
+		}
+
+		.footer__contact {
+			grid-column: 1 / span 6;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.footer {
+			padding: 3rem 1.25rem 1.8rem;
+		}
+
+		.footer__main {
+			grid-template-columns: 1fr;
+		}
+
+		.footer__brand,
+		.footer__nav,
+		.footer__contact {
+			grid-column: 1 / -1;
+		}
+	}
+</style>

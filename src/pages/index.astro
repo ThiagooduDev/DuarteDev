@@ -5,6 +5,9 @@ import Hero from '../components/Hero.astro';
 import Services from '../components/Services.astro';
 import Projects from '../components/Projects.astro';
 import Process from '../components/Process.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
@@ -14,9 +17,10 @@ import Process from '../components/Process.astro';
 		<Services />
 		<Projects />
 		<Process />
-		<section id="sobre-mi" aria-label="Sobre mí" style="min-height: 60vh;"></section>
-		<section id="contacto" aria-label="Contacto" style="min-height: 60vh;"></section>
+		<About />
+		<Contact />
 	</main>
+	<Footer />
 </Layout>
 
 

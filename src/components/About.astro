@@ -1,0 +1,336 @@
+<section class="about" id="sobre-mi" aria-labelledby="about-title">
+	<div class="about__inner">
+		<div class="about__grid">
+			<div class="about__content">
+				<div class="about__header">
+					<p class="about__eyebrow">SOBRE MÍ</p>
+					<h2 class="about__title" id="about-title">Desarrollo webs pensando en negocios reales.</h2>
+				</div>
+				<p class="about__text">
+					Soy Thiago, desarrollador web de Uruguay y creador de Duarte.Dev. Desarrollo páginas y sistemas web para
+					negocios, emprendimientos y proyectos que necesitan tener una presencia online clara y profesional.
+				</p>
+				<p class="about__text">
+					Me gusta crear soluciones simples, rápidas y adaptadas a lo que realmente necesita cada proyecto, desde
+					una web informativa hasta catálogos, reservas y sitios administrables.
+				</p>
+				<div class="about__signature">
+					<span class="about__signature-name">Duarte.Dev</span>
+					<span class="about__signature-meta">Desarrollo web · Uruguay</span>
+				</div>
+			</div>
+			<div class="about__visual">
+				<div class="about__visual-frame">
+					<div class="about__visual-grid" aria-hidden="true"></div>
+					<div class="about__visual-orbit" aria-hidden="true"></div>
+					<div class="about__monogram">
+						<img
+							class="about__monogram-icon"
+							src="/images/duartedev-icono.png"
+							alt=""
+							width="370"
+							height="370"
+							loading="lazy"
+							decoding="async"
+						/>
+					</div>
+					<div class="about__visual-lines" aria-hidden="true">
+						<span class="about__line about__line--horizontal"></span>
+						<span class="about__line about__line--vertical"></span>
+						<span class="about__dot about__dot--one"></span>
+						<span class="about__dot about__dot--two"></span>
+					</div>
+					<div class="about__visual-label">
+						<span class="about__visual-label-text">DUARTE.DEV</span>
+						<span class="about__visual-label-meta">DESARROLLO WEB · URUGUAY</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.about {
+		position: relative;
+		padding: 7rem 1.5rem 6rem;
+	}
+
+	.about__inner {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.about__grid {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		align-items: center;
+		gap: clamp(2.5rem, 7vw, 6rem);
+	}
+
+	.about__content {
+		grid-column: 1 / span 7;
+		display: flex;
+		flex-direction: column;
+		gap: 1.6rem;
+		animation: about-fade 0.7s ease both;
+	}
+
+	.about__header {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		max-width: 680px;
+	}
+
+	.about__eyebrow {
+		margin: 0;
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		letter-spacing: 0.28em;
+		font-size: 0.85rem;
+		font-weight: 500;
+	}
+
+	.about__title {
+		margin: 0;
+		font-size: clamp(2.1rem, 4.2vw, 3.6rem);
+		line-height: 1.08;
+		letter-spacing: -0.025em;
+		font-weight: 600;
+	}
+
+	.about__text {
+		margin: 0;
+		max-width: 62ch;
+		color: var(--text-secondary);
+		font-size: clamp(1rem, 1.6vw, 1.08rem);
+		line-height: 1.9;
+	}
+
+	.about__signature {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+		margin-top: 1rem;
+		padding-top: 1.6rem;
+		border-top: 1px solid var(--border-color);
+		max-width: 220px;
+	}
+
+	.about__signature-name {
+		font-weight: 500;
+		letter-spacing: -0.01em;
+	}
+
+	.about__signature-meta {
+		color: var(--text-secondary);
+		font-size: 0.9rem;
+		text-transform: uppercase;
+		letter-spacing: 0.16em;
+	}
+
+	.about__visual {
+		grid-column: 8 / span 5;
+		display: flex;
+		justify-content: center;
+		animation: about-fade 0.7s ease 0.1s both;
+	}
+
+	.about__visual-frame {
+		position: relative;
+		width: 100%;
+		max-width: 360px;
+		aspect-ratio: 1 / 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.about__visual-grid {
+		position: absolute;
+		inset: 12%;
+		background-image: radial-gradient(rgba(148, 163, 184, 0.14) 1px, transparent 1px);
+		background-size: 26px 26px;
+		opacity: 0.12;
+		mask-image: radial-gradient(circle, black, transparent 72%);
+		pointer-events: none;
+	}
+
+	.about__visual-orbit {
+		position: absolute;
+		inset: 18%;
+		border-radius: 50%;
+		border: 1px solid rgba(148, 163, 184, 0.25);
+		mask-image: conic-gradient(from 120deg, transparent 0, black 38%, black 58%, transparent 78%);
+		pointer-events: none;
+	}
+
+	.about__monogram {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 9rem;
+		height: 9rem;
+		border-radius: 1rem;
+		border: 1px solid var(--border-color);
+		background: radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, rgba(8, 10, 15, 0.9) 70%);
+		animation: about-float 9s ease-in-out infinite;
+	}
+
+	.about__monogram-icon {
+		width: 5rem;
+		height: 5rem;
+		object-fit: contain;
+	}
+
+	.about__visual-lines {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+
+	.about__line {
+		position: absolute;
+		background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.5), transparent);
+		opacity: 0.6;
+	}
+
+	.about__line--horizontal {
+		top: 50%;
+		left: 14%;
+		right: 14%;
+		height: 1px;
+		transform: translateY(-50%);
+	}
+
+	.about__line--vertical {
+		left: 50%;
+		top: 14%;
+		bottom: 14%;
+		width: 1px;
+		transform: translateX(-50%);
+		background: linear-gradient(180deg, transparent, rgba(37, 99, 235, 0.5), transparent);
+	}
+
+	.about__dot {
+		position: absolute;
+		width: 4px;
+		height: 4px;
+		border-radius: 50%;
+		background: var(--accent-violet-light);
+		box-shadow: 0 0 0 6px rgba(139, 92, 246, 0.08);
+	}
+
+	.about__dot--one {
+		top: 50%;
+		left: 14%;
+		transform: translate(-50%, -50%);
+	}
+
+	.about__dot--two {
+		left: 50%;
+		top: 14%;
+		transform: translate(-50%, -50%);
+		background: var(--accent-blue);
+		box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.08);
+	}
+
+	.about__visual-label {
+		position: absolute;
+		bottom: 8%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.25rem;
+		text-align: center;
+	}
+
+	.about__visual-label-text {
+		letter-spacing: 0.32em;
+		font-size: 0.8rem;
+	}
+
+	.about__visual-label-meta {
+		color: var(--text-secondary);
+		font-size: 0.72rem;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+	}
+
+	@keyframes about-fade {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes about-float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-6px);
+		}
+	}
+
+	@media (max-width: 980px) {
+		.about__content {
+			grid-column: 1 / span 7;
+		}
+
+		.about__visual {
+			grid-column: 8 / span 5;
+		}
+	}
+
+	@media (max-width: 860px) {
+		.about {
+			padding: 5rem 1.25rem 4rem;
+		}
+
+		.about__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.about__content,
+		.about__visual {
+			grid-column: 1 / -1;
+		}
+
+		.about__visual {
+			order: -1;
+		}
+
+		.about__visual-frame {
+			max-width: 280px;
+		}
+
+		.about__monogram {
+			width: 8rem;
+			height: 8rem;
+		}
+
+		.about__monogram-icon {
+			width: 4.4rem;
+			height: 4.4rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.about__content,
+		.about__visual {
+			animation: none;
+		}
+
+		.about__monogram {
+			animation: none;
+		}
+	}
+</style>
