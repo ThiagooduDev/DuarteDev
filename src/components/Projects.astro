@@ -1,0 +1,630 @@
+---
+const projects = [
+	{
+		name: "Alex Donuts",
+		category: "Web para negocio gastronómico",
+		description:
+			"Sitio desarrollado para Alex Donuts, pensado para mostrar sus productos, contenido e información del negocio con una experiencia adaptada a distintos dispositivos.",
+		features: [
+			"Catálogo",
+			"Galería",
+			"Horarios",
+			"Ubicación",
+			"Panel administrativo",
+			"Responsive",
+		],
+		image: "/images/proyectos/ADM.jpg",
+		imageAlt: "Vista móvil del sitio web de Alex Donuts",
+		href: "/proyectos/alex-donuts",
+		externalUrl: "https://alexdonuts.vercel.app",
+	},
+];
+
+const total = projects.length;
+const pad = (value: number) => String(value).padStart(2, "0");
+---
+
+<section class="projects" id="proyectos" aria-labelledby="projects-title">
+	<div class="projects__inner">
+		<header class="projects__header">
+			<div class="projects__header-top">
+				<p class="projects__eyebrow">PROYECTOS</p>
+				<span class="projects__range" aria-hidden="true">Portfolio</span>
+			</div>
+			<h2 class="projects__title" id="projects-title">Trabajos que hablan por sí solos.</h2>
+			<p class="projects__intro">
+				Una selección de proyectos desarrollados para negocios y emprendimientos.
+			</p>
+		</header>
+
+		<div class="projects__showcase" data-projects-carousel data-total={total}>
+			<div
+				class="projects__viewport"
+				data-projects-viewport
+				tabindex="0"
+				role="region"
+				aria-label="Carrusel de proyectos"
+			>
+				<ul class="projects__track">
+					{
+						projects.map((project, index) => (
+							<li class="project" data-project>
+								<div class="project__media">
+									<span class="project__media-label">Vista móvil</span>
+									<div class="project__device">
+										<img
+											class="project__image"
+											src={project.image}
+											alt={project.imageAlt}
+											width="770"
+											height="1536"
+											loading="eager"
+											decoding="async"
+										/>
+									</div>
+								</div>
+
+								<div class="project__info">
+									<div class="project__meta">
+										<span class="project__counter">
+											{pad(index + 1)} / {pad(total)}
+										</span>
+										<span class="project__category">{project.category}</span>
+									</div>
+
+									<h3 class="project__name">{project.name}</h3>
+									<p class="project__description">{project.description}</p>
+
+									<ul class="project__features">
+										{project.features.map((feature) => (
+											<li class="project__feature">{feature}</li>
+										))}
+									</ul>
+
+									<div class="project__actions">
+										<a class="project__button project__button--primary" href={project.href}>
+											Ver proyecto
+											<svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+												<path
+													d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5"
+													stroke="currentColor"
+													stroke-width="1.4"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</a>
+										<a
+											class="project__button project__button--ghost"
+											href={project.externalUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											Visitar web
+											<svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+												<path
+													d="M4.5 11.5L11.5 4.5M11.5 4.5H6M11.5 4.5V10"
+													stroke="currentColor"
+													stroke-width="1.4"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</a>
+									</div>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<div class="projects__controls">
+				<span class="projects__position" data-carousel-counter aria-live="polite">01 / {pad(total)}</span>
+				<div class="projects__nav">
+					<button
+						class="projects__nav-button"
+						type="button"
+						data-carousel-prev
+						aria-label="Proyecto anterior"
+						disabled
+					>
+						<svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+							<path
+								d="M13 8H3M3 8L7.5 3.5M3 8L7.5 12.5"
+								stroke="currentColor"
+								stroke-width="1.4"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</button>
+					<button
+						class="projects__nav-button"
+						type="button"
+						data-carousel-next
+						aria-label="Proyecto siguiente"
+						disabled
+					>
+						<svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+							<path
+								d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5"
+								stroke="currentColor"
+								stroke-width="1.4"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const carousels = document.querySelectorAll<HTMLElement>("[data-projects-carousel]");
+
+	carousels.forEach((carousel) => {
+		const viewport = carousel.querySelector<HTMLElement>("[data-projects-viewport]");
+		const slides = Array.from(carousel.querySelectorAll<HTMLElement>("[data-project]"));
+		const prevButton = carousel.querySelector<HTMLButtonElement>("[data-carousel-prev]");
+		const nextButton = carousel.querySelector<HTMLButtonElement>("[data-carousel-next]");
+		const counter = carousel.querySelector<HTMLElement>("[data-carousel-counter]");
+
+		if (!viewport || slides.length === 0) return;
+
+		const pad = (value: number) => String(value).padStart(2, "0");
+		const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+		let currentIndex = 0;
+
+		const updateControls = () => {
+			const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+			const atStart = viewport.scrollLeft <= 4;
+			const atEnd = viewport.scrollLeft >= maxScroll - 4;
+
+			if (prevButton) prevButton.disabled = atStart;
+			if (nextButton) nextButton.disabled = atEnd;
+
+			let closestIndex = 0;
+			let closestDistance = Number.POSITIVE_INFINITY;
+
+			slides.forEach((slide, index) => {
+				const distance = Math.abs(slide.offsetLeft - viewport.scrollLeft);
+				if (distance < closestDistance) {
+					closestDistance = distance;
+					closestIndex = index;
+				}
+			});
+
+			currentIndex = closestIndex;
+
+			if (counter) {
+				counter.textContent = `${pad(closestIndex + 1)} / ${pad(slides.length)}`;
+			}
+		};
+
+		const goTo = (index: number) => {
+			const target = slides[Math.max(0, Math.min(slides.length - 1, index))];
+			if (!target) return;
+
+			viewport.scrollTo({
+				left: target.offsetLeft,
+				behavior: reduceMotion.matches ? "auto" : "smooth",
+			});
+		};
+
+		prevButton?.addEventListener("click", () => goTo(currentIndex - 1));
+		nextButton?.addEventListener("click", () => goTo(currentIndex + 1));
+
+		let ticking = false;
+		viewport.addEventListener(
+			"scroll",
+			() => {
+				if (ticking) return;
+				ticking = true;
+				window.requestAnimationFrame(() => {
+					updateControls();
+					ticking = false;
+				});
+			},
+			{ passive: true }
+		);
+
+		window.addEventListener("resize", updateControls);
+		updateControls();
+	});
+</script>
+
+<style>
+	.projects {
+		position: relative;
+		padding: 7rem 1.5rem 6rem;
+	}
+
+	.projects__inner {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	.projects__header {
+		display: flex;
+		flex-direction: column;
+		gap: 1.1rem;
+		max-width: 780px;
+		animation: projects-fade 0.7s ease both;
+	}
+
+	.projects__header-top {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+	}
+
+	.projects__eyebrow {
+		margin: 0;
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		letter-spacing: 0.28em;
+		font-size: 0.85rem;
+		font-weight: 500;
+	}
+
+	.projects__range {
+		color: var(--text-secondary);
+		font-size: 0.8rem;
+		letter-spacing: 0.12em;
+		opacity: 0.75;
+		padding-left: 1.25rem;
+		border-left: 1px solid var(--border-color);
+	}
+
+	.projects__title {
+		margin: 0;
+		font-size: clamp(2.1rem, 4.2vw, 3.6rem);
+		line-height: 1.08;
+		letter-spacing: -0.025em;
+		font-weight: 600;
+	}
+
+	.projects__intro {
+		margin: 0;
+		color: var(--text-secondary);
+		font-size: clamp(1rem, 2vw, 1.15rem);
+		max-width: 620px;
+	}
+
+	.projects__showcase {
+		animation: projects-fade 0.7s ease 0.1s both;
+	}
+
+	.projects__viewport {
+		overflow-x: auto;
+		overflow-y: hidden;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		border-top: 1px solid var(--border-color);
+		border-bottom: 1px solid var(--border-color);
+	}
+
+	.projects__viewport::-webkit-scrollbar {
+		display: none;
+	}
+
+	.projects__viewport:focus-visible {
+		outline-offset: -2px;
+	}
+
+	.projects__track {
+		display: flex;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.project {
+		display: grid;
+		grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+		align-items: center;
+		gap: clamp(2rem, 5vw, 5rem);
+		flex: 0 0 100%;
+		min-width: 100%;
+		padding: 3.5rem 0;
+		scroll-snap-align: start;
+		scroll-snap-stop: always;
+	}
+
+	.project__media {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.project__media-label {
+		align-self: flex-start;
+		color: var(--text-secondary);
+		font-size: 0.72rem;
+		text-transform: uppercase;
+		letter-spacing: 0.22em;
+		opacity: 0.8;
+		padding-left: 0.15rem;
+	}
+
+	.project__device {
+		position: relative;
+		width: 100%;
+		max-width: 280px;
+		padding: 6px;
+		border: 1px solid var(--border-color);
+		border-radius: 1.75rem;
+		background: var(--bg-secondary);
+		box-shadow: 0 30px 70px -50px rgba(37, 99, 235, 0.55);
+	}
+
+	.project__device::before {
+		content: "";
+		position: absolute;
+		top: 12px;
+		left: 50%;
+		width: 3rem;
+		height: 3px;
+		border-radius: 999px;
+		background: var(--bg-primary);
+		transform: translateX(-50%);
+		z-index: 1;
+	}
+
+	.project__image {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 1.45rem;
+	}
+
+	.project__info {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1.1rem;
+	}
+
+	.project__meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.9rem;
+		color: var(--text-secondary);
+		font-size: 0.82rem;
+		letter-spacing: 0.06em;
+	}
+
+	.project__counter {
+		color: var(--accent-violet-light);
+		font-variant-numeric: tabular-nums;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+	}
+
+	.project__category {
+		padding-left: 0.9rem;
+		border-left: 1px solid var(--border-color);
+	}
+
+	.project__name {
+		margin: 0;
+		font-size: clamp(2.1rem, 4vw, 3.2rem);
+		line-height: 1.05;
+		letter-spacing: -0.025em;
+		font-weight: 600;
+	}
+
+	.project__description {
+		margin: 0;
+		max-width: 52ch;
+		color: var(--text-secondary);
+		font-size: 1rem;
+		line-height: 1.75;
+	}
+
+	.project__features {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 0.9rem;
+		margin: 0.2rem 0 0;
+		padding: 0;
+		list-style: none;
+		color: var(--text-secondary);
+		font-size: 0.88rem;
+	}
+
+	.project__feature {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.9rem;
+	}
+
+	.project__feature:not(:last-child)::after {
+		content: "·";
+		color: var(--border-color);
+	}
+
+	.project__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+		margin-top: 0.6rem;
+	}
+
+	.project__button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		padding: 0.8rem 1.4rem;
+		border-radius: 0.3rem;
+		font-size: 0.93rem;
+		font-weight: 500;
+		border: 1px solid transparent;
+		transition: transform 0.2s ease, border-color 0.25s ease, background 0.25s ease,
+			box-shadow 0.25s ease;
+	}
+
+	.project__button svg {
+		width: 1rem;
+		height: 1rem;
+		transition: transform 0.25s ease;
+	}
+
+	.project__button--primary {
+		background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-violet) 100%);
+		color: var(--text-primary);
+	}
+
+	.project__button--primary:hover,
+	.project__button--primary:focus-visible {
+		transform: translateY(-1px);
+		box-shadow: 0 18px 50px -28px rgba(37, 99, 235, 0.95);
+	}
+
+	.project__button--primary:hover svg,
+	.project__button--primary:focus-visible svg {
+		transform: translateX(3px);
+	}
+
+	.project__button--ghost {
+		border-color: var(--border-color);
+		color: var(--text-primary);
+	}
+
+	.project__button--ghost:hover,
+	.project__button--ghost:focus-visible {
+		border-color: rgba(139, 92, 246, 0.7);
+		background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.12) 100%);
+		transform: translateY(-1px);
+	}
+
+	.project__button--ghost:hover svg,
+	.project__button--ghost:focus-visible svg {
+		transform: translate(2px, -2px);
+	}
+
+	.project__button:active {
+		transform: translateY(0);
+	}
+
+	.projects__controls {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+		padding: 1.1rem 0 0;
+	}
+
+	.projects__position {
+		color: var(--text-secondary);
+		font-size: 0.85rem;
+		letter-spacing: 0.12em;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.projects__nav {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.projects__nav-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.6rem;
+		height: 2.6rem;
+		padding: 0;
+		border-radius: 0.3rem;
+		border: 1px solid var(--border-color);
+		background: transparent;
+		color: var(--text-primary);
+		cursor: pointer;
+		transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+	}
+
+	.projects__nav-button svg {
+		width: 1.05rem;
+		height: 1.05rem;
+	}
+
+	.projects__nav-button:hover:not(:disabled),
+	.projects__nav-button:focus-visible:not(:disabled) {
+		border-color: rgba(139, 92, 246, 0.7);
+		background: rgba(124, 58, 237, 0.1);
+	}
+
+	.projects__nav-button:disabled {
+		opacity: 0.3;
+		cursor: not-allowed;
+	}
+
+	@keyframes projects-fade {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 900px) {
+		.project {
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+			padding: 2.75rem 0;
+		}
+
+		.project__media {
+			align-items: center;
+		}
+
+		.project__media-label {
+			align-self: center;
+		}
+
+		.project__device {
+			max-width: 260px;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.projects {
+			padding: 5rem 1.25rem 4rem;
+		}
+
+		.projects__inner {
+			gap: 2.5rem;
+		}
+
+		.project__device {
+			max-width: 240px;
+		}
+
+		.project__actions {
+			width: 100%;
+		}
+
+		.project__button {
+			flex: 1 1 auto;
+			justify-content: center;
+		}
+	}
+
+	@media (max-width: 420px) {
+		.project__button {
+			width: 100%;
+			flex-basis: 100%;
+		}
+	}
+</style>

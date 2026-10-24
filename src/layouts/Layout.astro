@@ -1,3 +1,15 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Duarte.Dev",
+	description = "Duarte.Dev - Desarrollo web moderno para negocios, proyectos y emprendimientos.",
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="es">
 	<head>
@@ -6,17 +18,14 @@
 		<link rel="icon" type="image/png" href="/images/duartedev-favicon.png" />
 		<link rel="shortcut icon" href="/images/duartedev-favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<meta
-			name="description"
-			content="Duarte.Dev - Desarrollo web moderno para negocios, proyectos y emprendimientos."
-		/>
+		<meta name="description" content={description} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
-		<title>Duarte.Dev</title>
+		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
